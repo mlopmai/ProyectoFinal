@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->string('rol')->nullable();
             $table->date('fecha_nacimiento');
             $table->string('dni')->unique();
-            $table->string('email')->unique();
+            $table->string('email');
             $table->foreignId('oficina_id')->constrained()->onDelete('cascade');
             $table->timestamps();
 

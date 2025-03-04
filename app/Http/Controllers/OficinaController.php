@@ -45,9 +45,9 @@ class OficinaController extends Controller
      */
     public function show(string $id)
     {   
-        $oficinas = Oficina::findOrFail($id);
+        $oficina = Oficina::findOrFail($id);
         $empleados = Empleado::where('oficina_id', $id)->get();
-        return view('oficinas.show', compact('oficinas', 'empleados'));
+        return view('oficinas.show', compact('oficina', 'empleados'));
     }
 
     /**

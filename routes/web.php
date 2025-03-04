@@ -6,7 +6,7 @@ use App\Http\Controllers\EmpleadoController;
 
 Route::resource('oficinas', controller: OficinaController::class);
 
-Route::resource('oficinas/{oficina}/empleados', EmpleadoController::class);
+Route::resource('oficinas/{oficina}/empleados', controller: EmpleadoController::class);
 
 Route::get('/', function () {
     return view('welcome');

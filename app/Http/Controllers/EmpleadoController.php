@@ -28,18 +28,25 @@ class EmpleadoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Oficina $oficina)
+    public function store(Request $request, $id)
     {
-        $request->validate([
+        
+
+        $request->validate(rules: [
             'nombre' => 'required',
             'primer_apellido' => 'required',
+            'segundo_apellido' => 'required',
+            'rol' => 'required',
+            'fecha_nacimiento' => 'required|date',
             'dni' => 'required|unique:empleados,dni',
-            'email' => 'required|email|unique:empleados,email',
+            'email' => 'required|email',
+            'oficina_id' => 'required|exists:oficinas,id',
+        
         ]);
+        
+        Empleado::create($request->all());
 
-        $oficina->empleados()->create($request->all());
-
-        return redirect()->route('empleados.index', $oficina);
+        return redirect()->route('oficinas.index')->with('success', 'Empleado creado con éxito');
     }
 
     /**
@@ -53,26 +60,34 @@ class EmpleadoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Empleado $empleado)
+    public function edit(string $id)
     {
+        //PRUEBA
+        $empleado = Empleado::findOrFail($id);
         return view('empleados.edit', compact('empleado'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Empleado $empleado)
+    public function update(Request $request, $id)
     {
-        $request->validate([
+        $empleado = Empleado::findOrFail($id);
+        $request->validate(rules: [
             'nombre' => 'required',
             'primer_apellido' => 'required',
-            'dni' => 'required|unique:empleados,dni,' . $empleado->id,
-            'email' => 'required|email|unique:empleados,email,' . $empleado->id,
+            'segundo_apellido' => 'required',
+            'rol' => 'required',
+            'fecha_nacimiento' => 'required|date',
+            'dni' => 'required',
+            'email' => 'required|email',
+            'oficina_id' => 'required|exists:oficinas,id',
+        
         ]);
 
         $empleado->update($request->all());
 
-        return redirect()->route('empleados.index', $empleado->oficina);
+        return redirect()->route('oficinas.index')->with('success', 'Oficina editada correctamente.');
     }
 
     /**

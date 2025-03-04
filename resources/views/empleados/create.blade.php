@@ -1,7 +1,15 @@
-<form action="{{ route('empleados.store', $oficina) }}" method="POST">
+
+<div class="contentErorres">
+    @foreach ($errors->all() as $error )
+        <li style="color:red;">{{$error}}</li>
+        <br>
+    @endforeach
+</div>
+
+<form action="{{ route('empleados.store', parameters: $oficina) }}" method="POST">
         @csrf
         <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" required>
+        <input type="text" name="nombre" required >
 
         <label for="primer_apellido">Primer apellido:</label>
         <input type="text" name="primer_apellido" required>
@@ -20,6 +28,8 @@
 
         <label for="email">Email:</label>
         <input type="email" name="email" required>
+
+        <input type="hidden" name="oficina_id" value="{{ $oficina->id }}">
 
         <button type="submit">Guardar</button>
     </form>
