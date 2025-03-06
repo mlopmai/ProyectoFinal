@@ -52,28 +52,30 @@ class EmpleadoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $oficinaId,  string $empleadoId)
     {
-        $empleado = Empleado::findOrFail($id);
+        $oficina = Oficina::findOrFail($oficinaId);
+        $empleado = Empleado::findOrFail($empleadoId);
         return view('empleados.show', data: compact('empleado'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //PRUEBA
-        $empleado = Empleado::findOrFail($id);
+    public function edit(string $oficinaId,  string $empleadoId)
+    {     
+        $oficina = Oficina::findOrFail($oficinaId);
+        $empleado = Empleado::findOrFail($empleadoId);
         return view('empleados.edit', compact('empleado'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, string $oficinaId,  string $empleadoId)
     {
-        $empleado = Empleado::findOrFail($id);
+        $oficina = Oficina::findOrFail($oficinaId);
+        $empleado = Empleado::findOrFail($empleadoId);
         $request->validate(rules: [
             'nombre' => 'required',
             'primer_apellido' => 'required',
