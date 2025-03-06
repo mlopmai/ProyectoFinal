@@ -1,0 +1,28 @@
+.main {
+	margin: 3rem;
+	padding: 2rem;
+	background-color: #fff;
+	box-shadow: 0 2px 10px 0 rgba(0,0,0, 0.1);
+  }
+  
+  .empresas-lista {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+  }
+  
+  .empresa {
+	margin-bottom: 1rem;
+	padding: 2rem;
+	background-color: #f7f7f7;
+	box-shadow: 0 2px 10px 0 rgba(0,0,0, 0.1);
+  }
+  
+  .empresa a {
+	text-decoration: none;
+	color: #333;
+  }
+  
+  .empresa a:hover {
+	color: #666;
+  }

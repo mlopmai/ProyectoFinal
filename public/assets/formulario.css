@@ -1,0 +1,59 @@
+main {
+    margin: 3rem;
+    padding: 2rem;
+    background-color: #fff;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0, 0.1);
+}
+
+main .contentErorres {
+    margin-bottom: 2rem;
+}
+
+main .contentErorres li {
+    color: red;
+    list-style: none;
+}
+
+main a {
+    text-decoration: none;
+    color: #333;
+    background-color: #f7f7f7;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+main a:hover {
+    color: #666;
+    background-color: #e7e7e7;
+}
+
+main form {
+    margin-top: 2rem;
+}
+
+main label {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+main input {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border: 1px solid #ccc;
+}
+
+main button[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 1rem 2rem;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+main button[type="submit"]:hover {
+    background-color: #3e8e41;
+}

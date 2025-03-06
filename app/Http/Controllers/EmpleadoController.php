@@ -38,7 +38,7 @@ class EmpleadoController extends Controller
             'segundo_apellido' => 'required',
             'rol' => 'required',
             'fecha_nacimiento' => 'required|date',
-            'dni' => 'required|unique:empleados,dni',
+            'dni' => 'required|unique:empleados,dni|regex:/^[0-9]{8}[A-Za-z]$/',
             'email' => 'required|email',
             'oficina_id' => 'required|exists:oficinas,id',
         
@@ -54,7 +54,8 @@ class EmpleadoController extends Controller
      */
     public function show(string $id)
     {
-        return view();
+        $empleado = Empleado::findOrFail($id);
+        return view('empleados.show', data: compact('empleado'));
     }
 
     /**
@@ -79,7 +80,7 @@ class EmpleadoController extends Controller
             'segundo_apellido' => 'required',
             'rol' => 'required',
             'fecha_nacimiento' => 'required|date',
-            'dni' => 'required',
+            'dni' => 'required|regex:/^[0-9]{8}[A-Za-z]$/',
             'email' => 'required|email',
             'oficina_id' => 'required|exists:oficinas,id',
         
